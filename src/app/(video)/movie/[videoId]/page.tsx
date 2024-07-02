@@ -1,4 +1,5 @@
 "use client";
+import Video from "@/components/videoPlayer/video";
 import React from "react";
 
 type Props = {};

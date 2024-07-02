@@ -13,6 +13,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import RetroGrid from "@/components/ui/retro-grid";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 type Props = {};
 
@@ -87,12 +89,14 @@ const Page = (props: Props) => {
   useEffect(() => {
     if (search) {
       handleSearch(search);
+    } else {
+      setResults([]);
     }
   }, [search, handleSearch]);
 
   return (
     <TooltipProvider>
-      <div className="flex fc bg-[#000] h-full w-full overflow-y-auto">
+      <div className="flex fc bg-[#000] h-[100vh] w-full overflow-y-auto overflow-x-hidden scrollbar scrollbar-w-2 scrollbar-thumb-[#696969b1] scrollbar-thumb-rounded-full scrollbar-h-2 ">
         <div className="w-full mx-10 py-5">
           <div className="flex flex-col items-center space-y-20">
             <div className="w-80 space-y-5 flex flex-col items-center">
@@ -115,58 +119,62 @@ const Page = (props: Props) => {
                 >
                   List
                 </h1>
-                <div className="grid grid-cols-4 space-x-3">
+                <div className="grid grid-cols-1 space-x-3 space-y-0 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                   {results.map((result, index) => (
-                    <CardContainer className="inter-var" key={result.id}>
-                      <CardBody className="relative group/card hover:shadow-2xl max-w-sm hover:shadow-emerald-500/[0.1] bg-black border-white/[0.2] w-auto sm:w-[25rem] h-auto rounded-xl p-6 border">
-                        <CardItem
-                          translateZ="50"
-                          className="text-xl font-bold text-white"
-                        >
-                          {result.name || result.title}
-                        </CardItem>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <CardItem
-                              as="p"
-                              translateZ="60"
-                              className="text-sm mt-2 text-neutral-300 overflow-hidden overflow-ellipsis h-10 "
-                            >
-                              {result.overview}
-                            </CardItem>
-                          </TooltipTrigger>
-                          <TooltipContent className="w-80">
-                            <p>{result.overview}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                        <CardItem translateZ="100" className="w-full mt-4">
-                          <Image
-                            src={`https://image.tmdb.org/t/p/w500${result.poster_path}`}
-                            height="1000"
-                            width="1000"
-                            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl object-[50%_30%]"
-                            alt="thumbnail"
-                          />
-                        </CardItem>
-                        <div className="flex justify-between items-center mt-20">
-                          <Link href={`${result.media_type}/${result.id}`}>
-                            <CardItem
-                              translateZ={20}
-                              as="button"
-                              className="px-4 py-2 rounded-xl bg-white text-black text-xs font-bold"
-                            >
-                              Watch
-                            </CardItem>
-                          </Link>
-                        </div>
-                      </CardBody>
-                    </CardContainer>
+                    <div key={index} className="relative">
+                      <CardContainer className="inter-var" key={result.id}>
+                        <CardBody className="relative group/card hover:shadow-2xl max-w-sm w-full min-w-[300px] flex flex-col hover:shadow-emerald-500/[0.1] bg-black border-white/[0.2] h-auto rounded-xl p-6 border">
+                          <CardItem
+                            translateZ="50"
+                            className="text-xl font-bold text-white"
+                          >
+                            {result.name || result.title}
+                          </CardItem>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <CardItem
+                                as="p"
+                                translateZ="60"
+                                className="text-sm mt-2 text-neutral-300 overflow-hidden overflow-ellipsis h-10 "
+                              >
+                                {result.overview}
+                              </CardItem>
+                            </TooltipTrigger>
+                            <TooltipContent className="w-80">
+                              <p>{result.overview}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                          <CardItem translateZ="100" className="w-full mt-4">
+                            <Image
+                              src={`https://image.tmdb.org/t/p/w500${result.poster_path}`}
+                              height="1000"
+                              width="1000"
+                              className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl object-[50%_30%]"
+                              alt="thumbnail"
+                            />
+                          </CardItem>
+                          <div className="flex justify-between items-center mt-20">
+                            <Link href={`/${result.media_type}/${result.id}`}>
+                              <CardItem
+                                translateZ={20}
+                                as="button"
+                                className="px-4 py-2 rounded-xl bg-white text-black text-xs font-bold"
+                              >
+                                Watch
+                              </CardItem>
+                            </Link>
+                          </div>
+                          <BorderBeam size={500} duration={12} delay={9} />
+                        </CardBody>
+                      </CardContainer>
+                    </div>
                   ))}
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <RetroGrid />
       </div>
     </TooltipProvider>
   );
