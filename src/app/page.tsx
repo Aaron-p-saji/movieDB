@@ -7,6 +7,7 @@ import ShineBorder from "@/components/ui/shiny-border";
 import RetroGrid from "@/components/ui/retro-grid";
 import Link from "next/link";
 import SparklesText from "@/components/ui/sparkle-text";
+import Image from "next/image";
 
 export default function Home() {
   return (

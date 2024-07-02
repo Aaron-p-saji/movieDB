@@ -1,3 +1,5 @@
+import withPWAInit from "@ducanh2912/next-pwa";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -11,5 +13,19 @@ const nextConfig = {
     ],
   },
 };
+
+const withPWA = withPWAInit({
+  dest: "public",
+  cacheOnFrontEndNav: true,
+  aggressiveFrontEndNavCaching: true,
+  reloadOnOnline: true,
+  disable: false,
+  workboxOptions: {
+    disableDevLogs: true,
+  },
+  fallbacks: {
+    document: "/~offline",
+  },
+});
 
 export default nextConfig;
