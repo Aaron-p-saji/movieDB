@@ -347,14 +347,14 @@ const Page = ({ params }: { params: { videoId: string } }) => {
           </div>
         </div>
         <div className="w-full h-full rounded-xl flex flex-col overflow-hidden p-2 border-slate-300 border">
-          {/* <iframe
+          <iframe
             src={`https://vidsrc.xyz/embed/tv/${params.videoId}`}
             width="100%"
             height="100%"
             allowFullScreen
             referrerPolicy="origin"
             className="rounded-xl"
-          ></iframe> */}
+          ></iframe>
         </div>
         <div>
           <Carousel className="w-full max-w-xs">
