@@ -259,7 +259,7 @@ const Page = ({ params }: { params: { videoId: string } }) => {
         </div>
         <div className="w-full h-full rounded-xl flex flex-col overflow-hidden p-2 border-slate-300 border">
           <iframe
-            src={`https://vidsrc.xyz/embed/tv/${params.videoId}`}
+            src={`https://vidsrc.xyz/embed/movie/${params.videoId}`}
             width="100%"
             height="100%"
             allowFullScreen
