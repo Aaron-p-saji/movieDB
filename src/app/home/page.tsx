@@ -19,7 +19,7 @@ import { BorderBeam } from "@/components/ui/border-beam";
 type Props = {};
 
 // Define types for the response structure
-type SearchResult = {
+export type SearchResult = {
   backdrop_path: string | null;
   id: number;
   name?: string;
@@ -40,7 +40,7 @@ type SearchResult = {
   origin_country?: string[];
 };
 
-type ApiResponse = {
+export type ApiResponse = {
   page: number;
   results: SearchResult[];
   total_pages: number;
