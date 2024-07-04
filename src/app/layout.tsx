@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} w-screen h-screen m-0 p-0 box-border overflow-x-hidden scrollbar scrollbar-w-2 scrollbar-thumb-[#696969b1] scrollbar-thumb-rounded-full scrollbar-h-2 `}
+        className={`${poppins.className} relative w-screen h-screen m-0 p-0 box-border overflow-x-hidden scrollbar scrollbar-w-2 scrollbar-thumb-[#696969b1] scrollbar-thumb-rounded-full scrollbar-h-2 `}
       >
         {children}
       </body>

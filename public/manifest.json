@@ -1,12 +1,15 @@
 {
+  "name": "supaMovie",
+  "short_name": "supaMovie",
   "theme_color": "#000",
   "background_color": "#000",
   "display": "standalone",
-  "orientation": "portrait",
+  "orientation": "any",
   "start_url": "/",
-  "name": "supaMovie",
-  "short_name": "supa",
+  "scope": "/",
   "description": "Watch Movies / TV for free",
+  "lang": "en",
+  "categories": ["movie", "productivity"],
   "icons": [
     {
       "src": "/icon-192x192.png",
@@ -27,6 +30,41 @@
       "src": "/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/wide-main.png",
+      "sizes": "2560x1440",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/wide-search.png",
+      "sizes": "2560x1440",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/mobile-screenshot.png",
+      "sizes": "602x1280",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/mobile-list.png",
+      "sizes": "602x1280",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Search Movies & Series",
+      "short_name": "Search",
+      "description": "Search for Movies & Series",
+      "url": "/home",
+      "icons": [{ "src": "/search.png", "sizes": "105x105" }]
     }
   ]
 }
