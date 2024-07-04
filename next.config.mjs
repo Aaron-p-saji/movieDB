@@ -25,6 +25,12 @@ export default withPWA({
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "static.vecteezy.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 });
