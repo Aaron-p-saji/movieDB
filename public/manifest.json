@@ -47,13 +47,13 @@
     },
     {
       "src": "/mobile-screenshot.png",
-      "sizes": "602x1280",
+      "sizes": "540x720",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
       "src": "/mobile-list.png",
-      "sizes": "602x1280",
+      "sizes": "540x720",
       "type": "image/png",
       "form_factor": "narrow"
     }
