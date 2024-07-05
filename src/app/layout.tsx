@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,6 +26,8 @@ export default function RootLayout({
         className={`${poppins.className} relative w-screen h-screen m-0 p-0 box-border overflow-x-hidden scrollbar scrollbar-w-2 scrollbar-thumb-[#696969b1] scrollbar-thumb-rounded-full scrollbar-h-2 `}
       >
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
