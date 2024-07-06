@@ -2,13 +2,13 @@
 "use client";
 import Video from "@/components/videoPlayer/video";
 import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./style.css";
 import RetroGrid from "@/components/ui/retro-grid";
 import Link from "next/link";
 import Image from "next/image";
 import { ApiResponse, SearchResult } from "@/app/home/page";
-import { RiStarFill, RiTv2Line } from "@remixicon/react";
+import { RiPlayFill, RiStarFill, RiTv2Line } from "@remixicon/react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -27,6 +27,9 @@ import {
 } from "@/components/ui/tooltip";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { tree } from "next/dist/build/templates/app-page";
+import { PlayIcon } from "@radix-ui/react-icons";
+
+import player from "./player.module.css";
 
 type Props = {};
 type Creator = {
@@ -95,7 +98,7 @@ type SpokenLanguage = {
   name: string;
 };
 
-type Show = {
+export type Show = {
   adult: boolean;
   backdrop_path: string;
   created_by: Creator[];
@@ -160,6 +163,7 @@ const Page = ({ params }: { params: { videoId: string } }) => {
   const [search, setSearch] = useState<string>("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [recommended, setRecommended] = useState<TVShowResults>();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   // Debounce function
   const debounce = (func: (...args: any[]) => void, delay: number) => {
@@ -169,6 +173,22 @@ const Page = ({ params }: { params: { videoId: string } }) => {
       debounceTimer = setTimeout(() => func(...args), delay);
     };
   };
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (iframe) {
+      iframe.onload = () => {
+        iframe.contentWindow?.postMessage(
+          // {
+          //   action: "hideButton",
+          //   payload: { selector: "#top_eps_buttons .button" },
+          // },
+          { action: "clickPlayButton" },
+          "*"
+        );
+      };
+    }
+  }, []);
 
   const handleSearch = useCallback(
     debounce(async (query: string) => {
@@ -298,6 +318,18 @@ const Page = ({ params }: { params: { videoId: string } }) => {
       </div>
     );
   }
+
+  window.addEventListener("message", (event) => {
+    const { action } = event.data;
+
+    if (action === "clickPlayButton") {
+      const playButton = document.querySelector("#pl_but");
+      if (playButton) {
+        (playButton as HTMLElement).click();
+      }
+    }
+  });
+
   return (
     <TooltipProvider>
       <div className="w-full h-full flex flex-col bg-[#000] relative items-center overflow-y-auto">
@@ -390,16 +422,18 @@ const Page = ({ params }: { params: { videoId: string } }) => {
             </div>
           </div>
           <AspectRatio
-            className="border-slate-300 border rounded-xl p-2"
+            className="border-slate-300 border rounded-xl p-2 flex flex-col"
             ratio={16 / 9}
           >
             <iframe
               src={`https://vidsrc.xyz/embed/tv/${params.videoId}`}
+              ref={iframeRef}
               width="100%"
               height="100%"
               allowFullScreen
               referrerPolicy="origin"
               className="rounded-xl"
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock"
             ></iframe>
           </AspectRatio>
           <div className="flex flex-col items-center w-full space-y-10">

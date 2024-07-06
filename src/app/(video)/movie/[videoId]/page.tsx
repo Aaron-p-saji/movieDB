@@ -303,6 +303,7 @@ const Page = ({ params }: { params: { videoId: string } }) => {
               allowFullScreen
               referrerPolicy="origin"
               className="rounded-xl"
+              sandbox="allow-same-origin allow-scripts allow-pointer-lock"
             ></iframe>
           </div>
           <div>

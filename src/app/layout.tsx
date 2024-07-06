@@ -11,7 +11,10 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   manifest: "./manifest.json",
-  title: "supaMovie",
+  title: {
+    default: "supaMovie",
+    template: "%s | supaMovie",
+  },
   description: "Watch Movies / TV for free",
 };
 

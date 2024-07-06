@@ -351,3 +351,7 @@
     transform: rotate(-1turn);
   }
 }
+
+#sub-player #top_eps_buttons {
+  opacity: 100 !important;
+}
