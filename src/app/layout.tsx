@@ -16,6 +16,20 @@ export const metadata: Metadata = {
     template: "%s | supaMovie",
   },
   description: "Watch Movies / TV for free",
+  openGraph: {
+    title: "supaMovies",
+    description: "Watch Movies and TV Shows for free",
+    images:
+      "https://ucarecdn.com/99fd6ef1-61c4-457a-8ac7-f948cee34fdb/-/preview/1000x441/",
+    type: "website",
+  },
+  twitter: {
+    title: "supaMovies",
+    description: "Watch Movies and TV Shows for free",
+    images:
+      "https://ucarecdn.com/99fd6ef1-61c4-457a-8ac7-f948cee34fdb/-/preview/1000x441/",
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

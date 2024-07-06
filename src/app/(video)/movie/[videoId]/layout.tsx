@@ -54,7 +54,7 @@ export async function generateMetadata({
             : data?.poster_path
             ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
             : "",
-          type: "video.tv_show",
+          type: "video.movie",
         }),
           (twitter = {
             title: `Watch ${data?.title}`,
@@ -64,7 +64,7 @@ export async function generateMetadata({
               : data?.poster_path
               ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
               : "",
-            card: "app",
+            card: "summary_large_image",
           });
       } else {
         title = "Your Request Could not be completed";
