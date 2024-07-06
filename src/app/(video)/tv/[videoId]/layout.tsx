@@ -29,6 +29,7 @@ export async function generateMetadata({
     title: `Not Found`,
     description: "No Description",
     images: "",
+    card: "app",
   };
   if (videoId) {
     try {
@@ -63,6 +64,7 @@ export async function generateMetadata({
               : data?.poster_path
               ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
               : "",
+            card: "app",
           });
       } else {
         title = "Your Request Could not be completed";
