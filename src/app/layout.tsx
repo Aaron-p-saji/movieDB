@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description: "Watch Movies and TV Shows for free",
     images:
       "https://ucarecdn.com/99fd6ef1-61c4-457a-8ac7-f948cee34fdb/-/preview/1000x441/",
-    card: "app",
+    card: "summary_large_image",
   },
 };
 

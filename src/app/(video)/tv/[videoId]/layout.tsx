@@ -64,7 +64,7 @@ export async function generateMetadata({
               : data?.poster_path
               ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
               : "",
-            card: "app",
+            card: "player",
           });
       } else {
         title = "Your Request Could not be completed";

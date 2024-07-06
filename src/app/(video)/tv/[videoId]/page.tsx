@@ -29,8 +29,6 @@ import { BorderBeam } from "@/components/ui/border-beam";
 import { tree } from "next/dist/build/templates/app-page";
 import { PlayIcon } from "@radix-ui/react-icons";
 
-import player from "./player.module.css";
-
 type Props = {};
 type Creator = {
   id: number;
