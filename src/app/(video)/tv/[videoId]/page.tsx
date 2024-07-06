@@ -160,7 +160,7 @@ const Page = ({ params }: { params: { videoId: string } }) => {
   const [show, setShow] = useState<Show | null>(null);
   const [search, setSearch] = useState<string>("");
   const [results, setResults] = useState<SearchResult[]>([]);
-  const [recommended, setRecommended] = useState<TVShowResults>();
+  const [recommended, setRecommended] = useState<TVShowResults | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   // Debounce function
@@ -171,22 +171,6 @@ const Page = ({ params }: { params: { videoId: string } }) => {
       debounceTimer = setTimeout(() => func(...args), delay);
     };
   };
-
-  useEffect(() => {
-    const iframe = iframeRef.current;
-    if (iframe) {
-      iframe.onload = () => {
-        iframe.contentWindow?.postMessage(
-          // {
-          //   action: "hideButton",
-          //   payload: { selector: "#top_eps_buttons .button" },
-          // },
-          { action: "clickPlayButton" },
-          "*"
-        );
-      };
-    }
-  }, []);
 
   const handleSearch = useCallback(
     debounce(async (query: string) => {
