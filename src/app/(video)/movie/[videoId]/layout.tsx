@@ -50,7 +50,7 @@ export async function generateMetadata({
           description: data.overview ? data.overview : "",
           images: data.backdrop_path
             ? `https://image.tmdb.org/t/p/w500$${data.backdrop_path}`
-            : `https://image.tmdb.org/t/p/w500$${data?.poster_path}`
+            : data?.poster_path
             ? `https://image.tmdb.org/t/p/w500$${data.poster_path}`
             : "",
           type: "video.tv_show",
@@ -60,7 +60,7 @@ export async function generateMetadata({
             description: data.overview ? data.overview : "",
             images: data.backdrop_path
               ? `https://image.tmdb.org/t/p/w500$${data.backdrop_path}`
-              : `https://image.tmdb.org/t/p/w500$${data?.poster_path}`
+              : data?.poster_path
               ? `https://image.tmdb.org/t/p/w500$${data.poster_path}`
               : "",
           });
